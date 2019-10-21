@@ -1,2 +1,4 @@
 Header add Access-Control-Allow-Origin "*"
 Header add Cache-Control "no-cache, must-revalidate"
+
+Header add Access-Control-Allow-Headers "*"

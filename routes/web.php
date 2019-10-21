@@ -30,6 +30,7 @@ Route::get('/test/form', 'ApiController@handleForm');
 Route::get('/api/movies', 'MovieController@movies');
 Route::get('/api/movies/list', 'MovieController@index');
 Route::get('/api/movies/cast_and_crew', 'MovieController@cast_and_crew');
+
 Route::get('/api/movies/show', 'MovieController@show');
 
 //reviews

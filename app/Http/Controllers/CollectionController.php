@@ -30,6 +30,7 @@ class CollectionController extends Controller
 
     public function user_lists()
     {
-        return \App\User::where('id', 1)->get();
+        $user = \App\User::find(1);
+        return $user->collections;
     }
 }

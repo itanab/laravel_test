@@ -8,7 +8,7 @@ class Collection extends Model
 {
     public function movies()
     {
-        return $this->belongsToMany(\App\Movie::class, 'collection_movies');
+        return $this->belongsToMany('App\Movie', 'collection_movies');
     }
 
     public function genre()

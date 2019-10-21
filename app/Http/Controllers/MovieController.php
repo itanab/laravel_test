@@ -60,8 +60,8 @@ class MovieController extends Controller
         $id = $request->input('id');
         $movie = \App\Movie::find($id);
 
-        $ratings = $movie->ratings;
-        // return $movie;
+        //$ratings = $movie->ratings;
+        return $movie;
     }
     public function cast_and_crew(Request $request)
     {
