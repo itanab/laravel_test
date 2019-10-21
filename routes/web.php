@@ -35,7 +35,7 @@ Route::get('/api/movies/show', 'MovieController@show');
 
 //reviews
 Route::get('/api/review', 'Api\ReviewController@index');
-Route::post('/api/review', 'Api\ReviewController@store');
+Route::post('/api/review', 'ReviewController@store');
 
 //ratings
 
