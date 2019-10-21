@@ -46,7 +46,9 @@ Route::put('/api/rating', 'Api\RatingController@update');
 Route::get('/api/movies/top_rated', 'MovieController@top_rated');
 Route::get('/api/movies/movie_of_the_week', 'MovieController@movie_of_the_week');
 
-
+//morning workout monday
+Route::post('/api/collection', 'CollectionController@store');
+Route::get('/api/list/user', 'CollectionController@user_lists');
 
 //Route::resource('/api/review', 'ReviewController');
 //Route::resource('/api/rating', 'RatingController');
