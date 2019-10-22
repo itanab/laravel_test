@@ -53,3 +53,8 @@ Route::get('/api/list/user', 'CollectionController@user_lists');
 
 //Route::resource('/api/review', 'ReviewController');
 //Route::resource('/api/rating', 'RatingController');
+
+//morning workout favorite movies
+
+Route::post('/api/movies/favorite/toggle', 'Api\FavoriteMovieController@toggle');
+Route::get('/api/movies/favorite', 'Api\FavoriteMovieController@status');

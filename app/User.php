@@ -41,4 +41,11 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Collection');
     }
+
+    /*Go to the model User and declare a many-to-many relationship called favorite_movies() between the User model and the Movie model. As the second argument of the belongsToMany method put the name of the new table: 'favorite_movies'.*/
+
+    public function favorite_movies()
+    {
+        return $this->belongsToMany('App\Movie', 'favorite_movies');
+    }
 }
