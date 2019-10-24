@@ -40,7 +40,8 @@
             <img src="{{ $movie->poster_url}}">
             <h4>{{ $movie->year}}</h4>
             <a href="{{ action('NewMovieController@index') }}">Back to list of movies</a><br>
-            <a href="{{ action('ReviewController@index', $movie) }}">Show the reviews</a>
+            <a href="{{ action('ReviewController@index', $movie) }}">Show the reviews</a><br>
+            <a href="{{ action('ReviewController@create', $movie) }}">Create the reviews</a>
 
         </div>
 

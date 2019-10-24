@@ -12,6 +12,10 @@ class Movie extends Model
         return $this->hasMany('App\Review', 'movie_id', 'id');
     }
 
+    public function genres()
+    {
+        return $this->belongsToMany('App\Review');
+    }
 
     public function ratings()
     {

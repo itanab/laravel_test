@@ -26,9 +26,10 @@ class ReviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $movie=Movie::find($id);
+        return view('reviews/create', compact('movie'));
     }
 
     /**
@@ -37,9 +38,16 @@ class ReviewController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($movie, Request $request)
     {
-        //
+        $review = new Review();
+        $review->user_id = rand(1, 10000);
+        $review->movie_id = $movie;
+        $review->text = $request->input('text');
+        $review->save();
+
+        return redirect(action('ReviewController@index', $movie));
+        return $review;
     }
 
     /**
