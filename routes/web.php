@@ -49,10 +49,19 @@ Route::get('/api/movies/movie_of_the_week', 'MovieController@movie_of_the_week')
 Route::post('/api/collection', 'CollectionController@store');
 Route::get('/api/list/user', 'CollectionController@user_lists');
 
-//Route::resource('/api/review', 'ReviewController');
-//Route::resource('/api/rating', 'RatingController');
+
 
 //morning workout favorite movies
 
 Route::post('/api/movies/favorite/toggle', 'Api\FavoriteMovieController@toggle');
 Route::get('/api/movies/favorite', 'Api\FavoriteMovieController@status');
+
+
+
+//SLAVO 
+
+Route::get('/movies', 'NewMovieController@index');
+Route::get('/movies/{id}', 'NewMovieController@show');
+
+Route::get('/movies/{movie}/reviews', 'ReviewController@index');
+//Route::resource('/api/rating', 'RatingController');
