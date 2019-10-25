@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use App\Review;
 use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
@@ -27,7 +28,14 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('admin', function($user) {
             //any logic returning true / false
+            return true;
             return $user->id == 5;
+        });
+
+        Gate::define('create_review', function($user, $movie){
+            //wheater we can or cannot make a review
+            return Review::where('user_id', $user->id)->where('movie_id', $movie->id)->count() == 0;
+
         });
     }
 }

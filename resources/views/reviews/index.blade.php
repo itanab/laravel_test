@@ -17,7 +17,8 @@
     <a href="{{ action('NewMovieController@show', $movie) }}">Back to movie detail</a><br/>
 
     {{-- @if(auth()->user() !=null) --}}
-    @if(auth()->check())
+    {{--@if(auth()->check() && \Gate::allows('create_review', $movie))--}}
+    @can('create_review', $movie)
         <a href="{{ action('ReviewController@create', $movie) }}">Create a review</a>
-    @endif
+    @endcan
 @endsection

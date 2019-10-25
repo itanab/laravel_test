@@ -14,6 +14,10 @@ class ReviewController extends Controller
      */
     public function index($movie)
     {
+        if(\Gate::denies('admin')){
+            return 'go away you are not an admin';
+        }
+
         if(\Gate::allows('admin')){
             //$reviews = Review::where('movie_id', $movie)->get();
             $movie = Movie::findOrFail($movie);
