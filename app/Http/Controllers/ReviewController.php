@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\ReviewRequest;
 use Illuminate\Http\Request;
 use App\Review;
 use App\Movie;
@@ -14,11 +14,13 @@ class ReviewController extends Controller
      */
     public function index($movie)
     {
-        //$reviews = Review::where('movie_id', $movie)->get();
-        $movie = Movie::findOrFail($movie);
-        $reviews = $movie ->reviews()->get();
+        if(\Gate::allows('admin')){
+            //$reviews = Review::where('movie_id', $movie)->get();
+            $movie = Movie::findOrFail($movie);
+            $reviews = $movie ->reviews()->get();
     
-        return view('reviews/index', compact('reviews','movie'));
+            return view('reviews/index', compact('reviews','movie'));
+        }
     }
 
     /**
@@ -38,10 +40,18 @@ class ReviewController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($movie, Request $request)
+    public function store($movie, ReviewRequest $request)
     {
+        //validation code
+        /*
+        $this->validate($request, [
+            'text.required' => 'Oh come on, write that review'
+        ]);*/
+
         $review = new Review();
-        $review->user_id = rand(1, 10000);
+        //$review->user_id = auth()->user()->id;
+        //this line shortened
+        $review->user_id = auth()->id();
         $review->movie_id = $movie;
         $review->text = $request->input('text');
         $review->save();

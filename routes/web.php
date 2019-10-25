@@ -65,7 +65,10 @@ Route::get('/movies/{id}', 'NewMovieController@show');
 
 Route::get('/movies/{movie}/reviews', 'ReviewController@index');
 
-Route::get('/movies/{movie}/reviews/create', 'ReviewController@create');
+Route::get('/movies/{movie}/reviews/create', 'ReviewController@create')->middleware('auth');
 
-Route::post('/movies/{movie}/reviews', 'ReviewController@store');
+Route::post('/movies/{movie}/reviews', 'ReviewController@store')->middleware('auth');
 //Route::resource('/api/rating', 'RatingController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
