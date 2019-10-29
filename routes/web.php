@@ -72,3 +72,6 @@ Route::post('/movies/{movie}/reviews', 'ReviewController@store')->middleware('au
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::resource('new-person', 'NewPersonController');
