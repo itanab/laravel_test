@@ -6,7 +6,7 @@
     @foreach($persons as $person)
         <div>
             <h2> 
-                <a href="action('NewPersonController@show', $person->id)">{{$person->name}} </a>         
+                <a href="{{ action('NewPersonController@show', $person->id)}}">{{$person->name}} </a>         
             </h2>
         </div>
     @endforeach

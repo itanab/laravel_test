@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Person;
+use App\Profession;
 
 class NewPersonController extends Controller
 {
@@ -26,7 +27,8 @@ class NewPersonController extends Controller
      */
     public function create()
     {
-        //
+        $professions = Profession::all();
+        return view('person/create', compact('professions'));
     }
 
     /**
@@ -37,7 +39,13 @@ class NewPersonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name'=>'required|max:127',
+            'photo_url'=>'max:127'
+        ]);
+
+        $person = Person::create($request->all());
+        return redirect(action('NewPersonController@index'));
     }
 
     /**
@@ -48,7 +56,8 @@ class NewPersonController extends Controller
      */
     public function show($id)
     {
-        //
+        $person = Person::findOrFail($id);
+        return view('person/show', compact('person'));
     }
 
     /**
