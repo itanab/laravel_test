@@ -75,3 +75,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::resource('new-person', 'NewPersonController');
+
+Route::get('email', 'EmailController@index');
